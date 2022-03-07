@@ -25,6 +25,11 @@ const routes = [
     path: '/cart',
     component: () => import('../views/CartView.vue'),
   },
+  // Order
+  {
+    path: '/order',
+    component: () => import('../views/OrderView.vue'),
+  },
   // Admin
   {
     path: '/login',
@@ -33,6 +38,11 @@ const routes = [
   {
     path: '/admin',
     component: () => import('../views/AdminView.vue'),
+  },
+  // Admin products
+  {
+    path: '/admin-products',
+    component: () => import('../views/ProductsAdmin.vue'),
   },
 ];
 

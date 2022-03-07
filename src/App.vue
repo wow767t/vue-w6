@@ -1,10 +1,11 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/products">Products List Page</router-link> |
-    <router-link to="/cart">Cart List Page</router-link> |
-    <router-link to="/admin">Admin</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link  to="/">Home</router-link> |
+    <router-link  to="/products">Products List Page</router-link> |
+    <router-link  to="/cart">Cart List Page</router-link> |
+    <router-link  to="/admin">Admin</router-link> |
+    <router-link  to="/about">About</router-link>
+    <!-- <h2 v-hide>bb</h2> -->
   </div>
   <router-view/>
 </template>

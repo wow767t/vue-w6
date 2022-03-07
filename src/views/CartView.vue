@@ -3,12 +3,16 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col"></th>
-          <th scope="col">品名</th>
-          <th scope="col">數量</th>
-          <th scope="col">單價</th>
-          <th scope="col">總計</th>
-          <th scope="col"></th>
+          <th style="vertical-align: middle" scope="col"></th>
+          <th style="vertical-align: middle" scope="col">品名</th>
+          <th style="vertical-align: middle" scope="col">數量</th>
+          <th style="vertical-align: middle" scope="col">單價</th>
+          <th style="vertical-align: middle" scope="col">總計</th>
+          <th style="vertical-align: middle" scope="col">
+            <button @click="deleItemAll" type="button" class="btn btn-light">
+              del all
+            </button>
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -38,7 +42,7 @@
           </td>
         </tr>
       </tbody>
-      <tfoot>
+      <tfoot v-show="cart.length">
         <tr>
           <td></td>
           <td></td>
@@ -46,8 +50,8 @@
           <td></td>
           <td>{{ orderPrice }}</td>
           <td>
-            <button @click="deleItemAll" type="button" class="btn btn-light">
-              del all
+            <button @click="toOrderPage" type="button" class="btn btn-outline-danger">
+              結帳
             </button>
           </td>
         </tr>
@@ -88,7 +92,7 @@ export default {
         .delete(`${url}api/${path}/cart/${id}`)
         .then((res) => {
           console.log(res);
-          console.log(res.data.message);
+          alert(res.data.message);
           this.getCart();
         })
         .catch((err) => {
@@ -107,6 +111,9 @@ export default {
         .catch((err) => {
           console.dir(err);
         });
+    },
+    toOrderPage() {
+      this.$router.push({ path: '/order' });
     },
   },
   mounted() {
