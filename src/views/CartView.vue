@@ -9,9 +9,7 @@
           <th style="vertical-align: middle" scope="col">單價</th>
           <th style="vertical-align: middle" scope="col">總計</th>
           <th style="vertical-align: middle" scope="col">
-            <button @click="deleItemAll" type="button" class="btn btn-light">
-              del all
-            </button>
+            <button @click="deleItemAll" type="button" class="btn btn-light">del all</button>
           </th>
         </tr>
       </thead>
@@ -36,9 +34,7 @@
           <td style="vertical-align: middle">{{ product.product.price }}</td>
           <td style="vertical-align: middle">{{ product.final_total }}</td>
           <td style="vertical-align: middle">
-            <button @click="deleItem(product.id)" type="button" class="btn btn-light">
-              del
-            </button>
+            <button @click="deleItem(product.id)" type="button" class="btn btn-light">del</button>
           </td>
         </tr>
       </tbody>
@@ -50,23 +46,30 @@
           <td></td>
           <td>{{ orderPrice }}</td>
           <td>
-            <button @click="toOrderPage" type="button" class="btn btn-outline-danger">
-              結帳
-            </button>
+            <button @click="openModal" type="button" class="btn btn-outline-danger">結帳</button>
           </td>
         </tr>
       </tfoot>
     </table>
   </div>
+  <CheckoutModal @emit-modal="getModal" />
 </template>
 
 <script>
+import CheckoutModal from '@/components/CheckoutModal.vue';
+
 const url = process.env.VUE_APP_URL;
 const path = process.env.VUE_APP_PATH;
+
 export default {
+  components: {
+    CheckoutModal,
+  },
   data() {
     return {
       cart: [],
+      modal: '',
+      // temp for test
       orderPrice: 0,
     };
   },
@@ -112,8 +115,12 @@ export default {
           console.dir(err);
         });
     },
-    toOrderPage() {
-      this.$router.push({ path: '/order' });
+    // get checkout modal & open modal
+    getModal(obj) {
+      this.modal = obj;
+    },
+    openModal() {
+      this.modal.show();
     },
   },
   mounted() {

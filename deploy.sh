@@ -14,7 +14,7 @@ cd dist
 
 git init
 git add -A
-git commit -m 'deploy-2'
+git commit -m 'upate to week7 ver'
 
 # 部署到 https://<USERNAME>.github.io
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master

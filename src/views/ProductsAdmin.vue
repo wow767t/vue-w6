@@ -1,7 +1,7 @@
 <template>
   <h2>add edit dele item</h2>
   <AdminNav/>
-  <router-link to="/admin-products">Products Database</router-link> |
+  <!-- <router-link to="/admin-products">Products Database</router-link> | -->
   <div class="container">
     <table class="table">
       <thead>
@@ -90,7 +90,8 @@ export default {
           console.log('login success: ', res.data.success);
         })
         .catch((err) => {
-          console.error(err);
+          console.dir(err);
+          this.$router.push('/');
         });
     },
     getProductsPage(page = 1) {

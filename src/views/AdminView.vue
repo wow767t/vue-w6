@@ -1,22 +1,22 @@
 <template>
   <h2>Admin</h2>
   <div class="container">
-    <router-link to="/admin-products">Products Database</router-link> |
+    <AdminNav />
+    <!-- <router-link to="/admin-products">Products Database</router-link> | -->
   </div>
 </template>
 
 <script>
+import AdminNav from '@/components/AdminNav.vue';
+
 export default {
+  components: {
+    AdminNav,
+  },
   data() {
-    return {
-
-    };
+    return {};
   },
-  methods: {
-
-  },
-  mounted() {
-
-  },
+  methods: {},
+  mounted() {},
 };
 </script>

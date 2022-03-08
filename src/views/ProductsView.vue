@@ -1,7 +1,10 @@
 <template>
   <div class="container ">
     <h2>Products List Page</h2>
-    <div class="row row-cols-4 g-5">
+    <div class="row
+    row-cols-lg-4
+    row-cols-md-3
+    row-cols-1 g-5">
       <div v-for="product in products" :key="product.id" class="col">
         <div class="card" style="width: 18rem">
           <img
@@ -59,7 +62,7 @@ export default {
       this.$http
         .get(`${url}api/${path}/products?page=${page}`)
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           const { products, pagination } = res.data;
           this.products = products;
           this.pagination = pagination;
