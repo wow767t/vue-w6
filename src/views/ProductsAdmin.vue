@@ -127,8 +127,24 @@ export default {
           });
       }
     },
+    isLoading() {
+      const loader = this.$loading.show({
+        // Optional parameters
+        // container: this.fullPage ? true : this.$refs.formContainer,
+        canCancel: true,
+        onCancel: this.onCancel,
+      });
+      // simulate AJAX
+      setTimeout(() => {
+        loader.hide();
+      }, 500);
+    },
+    onCancel() {
+      console.log('User cancelled the loader.');
+    },
   },
   mounted() {
+    this.isLoading();
     const myCookie = document.cookie.replace(/(?:(?:^|.*;\s*)myToken\s*=\s*([^;]*).*$)|^.*$/, '$1');
     this.$http.defaults.headers.common.Authorization = myCookie;
     this.checkUser();

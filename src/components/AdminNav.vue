@@ -8,7 +8,7 @@
     </li>
     <li class="nav-item"></li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Coupons</a>
+      <router-link class="nav-link" to="/admin-coupons">Coupons</router-link>
     </li>
     <li class="nav-item">
       <a @click.prevent="logout" class="nav-link" href="#">Log out</a>

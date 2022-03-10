@@ -98,8 +98,24 @@ export default {
       this.modal.show();
       this.targetProduct = product;
     },
+    isLoading() {
+      const loader = this.$loading.show({
+        // Optional parameters
+        // container: this.fullPage ? true : this.$refs.formContainer,
+        canCancel: true,
+        onCancel: this.onCancel,
+      });
+      // simulate AJAX
+      setTimeout(() => {
+        loader.hide();
+      }, 500);
+    },
+    onCancel() {
+      console.log('User cancelled the loader.');
+    },
   },
   mounted() {
+    this.isLoading();
     this.getProductsPage();
   },
 };

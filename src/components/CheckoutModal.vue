@@ -16,6 +16,7 @@
             <div class="mb-3">
               <label for="name" class="form-label">收件人姓名</label>
               <input
+                v-model="userData.user.name"
                 id="name"
                 name="姓名"
                 type="text"
@@ -29,6 +30,7 @@
             <div class="mb-3">
               <label for="tel" class="form-label">收件人電話</label>
               <input
+                v-model="userData.user.tel"
                 id="tel"
                 name="電話"
                 type="tel"
@@ -41,6 +43,7 @@
             <div class="mb-3">
               <label for="address" class="form-label">收件人地址</label>
               <input
+                v-model="userData.user.address"
                 id="address"
                 name="地址"
                 type="text"
@@ -53,10 +56,18 @@
 
             <div class="mb-4">
               <label for="message" class="form-label">留言</label>
-              <textarea name="" id="message" class="form-control" cols="30" rows="10"></textarea>
+              <textarea
+                v-model="userData.message"
+                name=""
+                id="message"
+                class="form-control"
+                cols="30"
+                rows="10"
+              >
+              </textarea>
             </div>
             <div class="text-end">
-              <button @click.prevent="toOrderPage" class="btn btn-danger">送出訂單</button>
+              <button @click.prevent="mittTemp" class="btn btn-danger">送出訂單</button>
             </div>
           </form>
         </div>
@@ -67,28 +78,43 @@
 
 <script>
 import Modal from 'bootstrap/js/dist/modal';
+// mitt
+import mitt from 'mitt';
+
+const emitter = mitt();
 
 export default {
   name: 'CheckoutModal',
   data() {
     return {
       modal: '',
+      userData: {
+        user: {
+          name: '',
+          email: '',
+          tel: '',
+          address: '',
+        },
+        message: '',
+      },
+      // temp
+      temp: 'temp',
     };
   },
   methods: {
     emitModal() {
       this.$emit('emit-modal', this.modal);
     },
-    // temp function
-    toOrderPage() {
-      this.modal.hide();
-      this.$router.push({ path: '/order' });
+    mittTemp() {
+      console.log('emit');
+      emitter.emit('mitt-temp', this.temp);
     },
   },
   mounted() {
     this.modal = new Modal(this.$refs.modal);
     this.emitModal();
     // this.modal.show();
+    console.log(emitter);
   },
 };
 </script>

@@ -14,5 +14,10 @@ export default {
   components: {
     HelloWorld,
   },
+  // for test
+  data() {
+    return {
+    };
+  },
 };
 </script>

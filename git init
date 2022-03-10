@@ -9,6 +9,6 @@ sh deploy.sh
 
 sec
 
-git add*
-git commit -m 'update - week7 ver'
+git add *
+git commit -m 'week7 loading effect'
 git push
